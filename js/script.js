@@ -18,16 +18,16 @@ $(document).ready(function () {
     $("#header").load("../components/header/header.html");
     $("#footer").load("../components/footer/footer.html");
 });
-    
+
 //produtos
 document.addEventListener("DOMContentLoaded", function () {
-    let produtos = []; // Array para armazenar produtos
+    let produtos = [];
 
     fetch('../assets/data/produtos.json')
         .then(response => response.json())
         .then(data => {
-            produtos = data; // Armazena os produtos no array
-            renderizarProdutos(produtos); // Renderiza os produtos inicialmente
+            produtos = data;
+            renderizarProdutos(produtos);
         })
         .catch(error => {
             console.error("Erro ao carregar os produtos:", error);
@@ -36,7 +36,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Função para renderizar produtos
     function renderizarProdutos(produtos) {
         const gridProdutos = document.querySelector('.grid-produtos');
-        gridProdutos.innerHTML = ''; // Limpa a grid antes de renderizar
+        gridProdutos.innerHTML = '';
+
+        if (produtos.length === 0) {
+            gridProdutos.innerHTML = '<p style="font-weight: bold">Nenhum produto encontrado.</p>';
+            return;
+        }
 
         produtos.forEach(produto => {
             const produtoCard = `
@@ -46,15 +51,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     <h5 class="card-title">${produto.nome}</h5>
                     <p class="card-text">${produto.marca}</p>
                     <p class="card-text">${produto.descricao}</p>
-                    <p class="card-preco">R$ ${produto.preco}</p>
+                    <p class="card-preco">R$ ${produto.preco.toFixed(2)}</p>
+                    <button class="adicionar-carrinho"><i class="fas fa-shopping-cart"></i></button>
                   </div>
                 </div>
-              `;
+            `;
             gridProdutos.innerHTML += produtoCard;
         });
     }
 
-    // Evento do botão de filtro
     document.getElementById('filtrar-btn').addEventListener('click', function () {
         const nome = document.getElementById('filtro-nome').value.toLowerCase();
         const marca = document.getElementById('filtro-marca').value.toLowerCase();
@@ -68,8 +73,65 @@ document.addEventListener("DOMContentLoaded", function () {
             );
         });
 
-        renderizarProdutos(produtosFiltrados); // Renderiza os produtos filtrados
+        renderizarProdutos(produtosFiltrados);
     });
+
+});
+
+// Função para carregar os estados e preencher o select
+function carregarEstados() {
+    fetch('../assets/data/estados.json')
+        .then(response => response.json())
+        .then(estados => {
+            const selectEstado = document.getElementById('estado');
+
+            // Limpa as opções existentes
+            selectEstado.innerHTML = '<option value="" disabled selected>Selecione o estado</option>';
+
+            // Adiciona as opções no select
+            estados.forEach(estado => {
+                const option = document.createElement('option');
+                option.value = estado.sigla;
+                option.textContent = estado.nome;
+                selectEstado.appendChild(option);
+            });
+        })
+        .catch(erro => console.log('Erro ao carregar estados:', erro));
+}
+
+// Chama a função para carregar os estados quando a página carregar
+document.addEventListener('DOMContentLoaded', carregarEstados);
+
+
+// Endereço
+function buscarEndereco(cep) {
+    const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(dados => {
+            if (dados.erro) {
+                console.log('CEP não encontrado');
+            } else {
+                // Preencher os campos do formulário com os dados recebidos da API
+                document.getElementById('logradouro').value = dados.logradouro || '';
+                document.getElementById('bairro').value = dados.bairro || '';
+                document.getElementById('cidade').value = dados.localidade || '';
+                document.getElementById('estado').value = dados.uf || '';
+                document.getElementById('cep').value = dados.cep || '';
+            }
+        })
+        .catch(erro => console.log('Erro ao buscar o endereço:', erro));
+}
+
+// Exemplo de como usar a função ao digitar o CEP no campo de CEP
+document.getElementById('cep').addEventListener('blur', function () {
+    const cep = this.value.replace(/\D/g, ''); // Remove qualquer caractere não numérico
+    if (cep.length === 8) { // Verifica se o CEP tem 8 dígitos
+        buscarEndereco(cep);
+    }
 });
 
 
+
+// Pagamento
