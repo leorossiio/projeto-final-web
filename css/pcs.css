@@ -1,0 +1,109 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--branco);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 36px;
+    color: var(--primary-color);
+    font-family: var(--secondary-font);
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 24px;
+    color: var(--dark-charcoal);
+    font-family: var(--primary-font);
+    margin-top: 2rem;
+    font-weight: 700;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    margin-bottom: 1.5rem;
+}
+
+/* Formulário Estilos Gerais */
+.form-group label {
+    font-family: var(--secondary-font);
+    color: var(--dark-charcoal);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(67, 94, 184, 0.5);
+}
+
+/* Botão */
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    font-family: var(--primary-font);
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #354a90; /* Cor de hover */
+}
+
+/* Estilos específicos da página de Pagamento */
+#numero-cartao, #nome-cartao, #validade, #codigo-seguranca {
+    width: 100%;
+}
+
+button[type="submit"] {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* Estilos específicos da página de Contato */
+#nome, #email, #mensagem {
+    width: 100%;
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    p, .form-group label {
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+        padding: 0.6rem 1.2rem;
+    }
+}

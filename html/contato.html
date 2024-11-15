@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato</title>
+
+    <!-- CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+    <!-- Seu CSS personalizado -->
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../components/header/header.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+    <!-- Header será carregado aqui -->
+    <div id="header"></div>
+
+    <!-- Conteúdo da página -->
+    <section class="header-home">
+        <span> Melhore sua vida com a tecnologia </span>
+    </section>
+
+    <main class="container my-5">
+        <div class="produtos">
+            <h2 class="display-4">Contato</h2>
+            <p class="lead">Entre em contato conosco através do formulário abaixo.</p>
+            <form>
+                <div class="form-group">
+                    <label for="nome" class="font-weight-bold">Nome</label>
+                    <input type="text" class="form-control" id="nome" required />
+                </div>
+                <div class="form-group">
+                    <label for="email" class="font-weight-bold">Email</label>
+                    <input type="email" class="form-control" id="email" required />
+                </div>
+                <div class="form-group">
+                    <label for="mensagem" class="font-weight-bold">Mensagem</label>
+                    <textarea class="form-control" id="mensagem" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer será carregado aqui -->
+    <div id="footer"></div>
+
+    <!-- Seu JavaScript personalizado -->
+    <script src="../js/script.js" defer></script>
+
+    <!-- JS do Bootstrap e jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

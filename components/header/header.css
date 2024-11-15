@@ -1,0 +1,128 @@
+header {
+    background-color: var(--background);
+    color: var(--dark-charcoal);
+}
+
+.offer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    background: var(--primary-color);
+    height: 40px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo h1 {
+    font-family: var(--secondary-font);
+    font-size: 24px;
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--dark-charcoal);
+    text-decoration: none;
+    font-family: var(--primary-font);
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--dark-gray);
+}
+
+span {
+    color: var(--white);
+}
+
+#ofertas {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+#instagram {
+    background-color: white;
+    width: 25px;
+    text-align: center;
+    border-radius: 50%;
+    height: auto;
+}
+
+.carrinho {
+    width: 157px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.carrinho a {
+    color: var(--dark-charcoal);
+    padding: 5px;
+    border: solid 1px var(--dark-charcoal);
+    border-radius: 5px;
+}
+
+.carrinho a:hover {
+    background-color: var(--cor-hover);
+}
+
+.logo img {
+    width: 126px;
+    height: auto;
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px) {}
+
+/* Tablet */
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    #email {
+        display: none;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+    .offer {
+        justify-content: center;
+    }
+
+    #header-principal {
+        flex-direction: column;
+    }
+
+    .carrinho {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    #email,
+    #rede-social {
+        display: none;
+    }
+
+    .logo img {
+        width: 196px;
+        height: auto;
+    }
+}

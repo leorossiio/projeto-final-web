@@ -1,0 +1,132 @@
+[
+    {
+        "nome": "iPhone 14",
+        "marca": "Apple",
+        "preco": 5999.99,
+        "descricao": "iPhone 14 com chip A15 Bionic, câmera dupla de 12MP e tela Super Retina XDR.",
+        "imagem": "iphone14.png",
+        "propriedades": {
+            "tela": "6.1 polegadas",
+            "bateria": "3279mAh",
+            "armazenamento": "128GB / 256GB / 512GB",
+            "processador": "A15 Bionic"
+        }
+    },
+    {
+        "nome": "iPhone 14 Pro",
+        "marca": "Apple",
+        "preco": 9999.99,
+        "descricao": "iPhone 14 Pro com tela ProMotion de 6.1 polegadas e câmera tripla de 48MP.",
+        "imagem": "iphone14pro.png",
+        "propriedades": {
+            "tela": "6.1 polegadas",
+            "bateria": "3200mAh",
+            "armazenamento": "128GB / 256GB / 512GB / 1TB",
+            "processador": "A16 Bionic"
+        }
+    },
+    {
+        "nome": "iPhone 14 Pro Max",
+        "marca": "Apple",
+        "preco": 10999.99,
+        "descricao": "iPhone 14 Pro Max com tela de 6.7 polegadas, chip A16 e câmera avançada.",
+        "imagem": "iphone14max.png",
+        "propriedades": {
+            "tela": "6.7 polegadas",
+            "bateria": "4323mAh",
+            "armazenamento": "128GB / 256GB / 512GB / 1TB",
+            "processador": "A16 Bionic"
+        }
+    },
+    {
+        "nome": "iPhone SE (2022)",
+        "marca": "Apple",
+        "preco": 3299.99,
+        "descricao": "iPhone SE com chip A15 Bionic e câmera de 12MP.",
+        "imagem": "iphonese.png",
+        "propriedades": {
+            "tela": "4.7 polegadas",
+            "bateria": "2018mAh",
+            "armazenamento": "64GB / 128GB / 256GB",
+            "processador": "A15 Bionic"
+        }
+    },
+    {
+        "nome": "iPhone 13",
+        "marca": "Apple",
+        "preco": 3999.99,
+        "descricao": "iPhone 13 com chip A15 Bionic, câmera dupla e display Super Retina XDR.",
+        "imagem": "iphone13.png",
+        "propriedades": {
+            "tela": "6.1 polegadas",
+            "bateria": "3240mAh",
+            "armazenamento": "128GB / 256GB / 512GB",
+            "processador": "A15 Bionic"
+        }
+    },
+    {
+        "nome": "Galaxy S22",
+        "marca": "Samsung",
+        "preco": 3999.99,
+        "descricao": "Samsung Galaxy S22 com tela de 6.1 polegadas e câmera tripla de 50MP.",
+        "imagem": "s22.png",
+        "propriedades": {
+            "tela": "6.1 polegadas",
+            "bateria": "3700mAh",
+            "armazenamento": "128GB / 256GB",
+            "processador": "Exynos 2200 / Snapdragon 8 Gen 1"
+        }
+    },
+    {
+        "nome": "Galaxy S22 Ultra",
+        "marca": "Samsung",
+        "preco": 9999.99,
+        "descricao": "Galaxy S22 Ultra com tela de 6.8 polegadas, S Pen e câmera quádrupla de 108MP.",
+        "imagem": "s22ultra.png",
+        "propriedades": {
+            "tela": "6.8 polegadas",
+            "bateria": "5000mAh",
+            "armazenamento": "128GB / 256GB / 512GB / 1TB",
+            "processador": "Exynos 2200 / Snapdragon 8 Gen 1"
+        }
+    },
+    {
+        "nome": "Galaxy Z Flip4",
+        "marca": "Samsung",
+        "preco": 7999.99,
+        "descricao": "Samsung Galaxy Z Flip4, smartphone dobrável com design inovador e câmera dupla.",
+        "imagem": "zflip.png",
+        "propriedades": {
+            "tela": "6.7 polegadas (dobrável)",
+            "bateria": "3700mAh",
+            "armazenamento": "128GB / 256GB / 512GB",
+            "processador": "Snapdragon 8+ Gen 1"
+        }
+    },
+    {
+        "nome": "Xiaomi 12 Pro",
+        "marca": "Xiaomi",
+        "preco": 4999.99,
+        "descricao": "Xiaomi 12 Pro com tela AMOLED de 6.73 polegadas e carregamento rápido.",
+        "imagem": "xiaomi12pro.png",
+        "propriedades": {
+            "tela": "6.73 polegadas",
+            "bateria": "4600mAh",
+            "armazenamento": "128GB / 256GB",
+            "processador": "Snapdragon 8 Gen 1"
+        }
+    },
+    {
+        "nome": "Xiaomi Mi 11",
+        "marca": "Xiaomi",
+        "preco": 3499.99,
+        "descricao": "Xiaomi Mi 11 com câmera de 108MP e tela AMOLED de 6.81 polegadas.",
+        "imagem": "xiaomi11.png",
+        "propriedades": {
+            "tela": "6.81 polegadas",
+            "bateria": "4600mAh",
+            "armazenamento": "128GB / 256GB",
+            "processador": "Snapdragon 888"
+        }
+    }
+]
