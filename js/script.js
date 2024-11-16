@@ -1,4 +1,3 @@
-// Função para carregar o header
 fetch('../components/header/header.html')
     .then(response => response.text())
     .then(data => {
@@ -13,16 +12,82 @@ fetch('../components/footer/footer.html')
     })
     .catch(error => console.error('Erro ao carregar o footer:', error));
 
-
 $(document).ready(function () {
     $("#header").load("../components/header/header.html");
     $("#footer").load("../components/footer/footer.html");
 });
 
-//produtos
+document.addEventListener('DOMContentLoaded', function () {
+    exibirProdutosCarrinho();
+    calcularTotal();
+});
+
+function exibirProdutosCarrinho() {
+    const listaProdutos = document.getElementById('lista-produtos');
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    listaProdutos.innerHTML = '';
+    if (carrinho.length === 0) {
+        listaProdutos.innerHTML = '<p>Nenhum produto no carrinho.</p>';
+        return;
+    }
+    carrinho.forEach((produto, index) => {
+        const produtoCard = `
+            <div class="produto-carrinho card produto-card">
+                <img src="../assets/imagens/produtos/${produto.imagem}.png" class="card-img-top" alt="${produto.nome}">
+                <h5>${produto.nome}</h5>
+                <p>Preço: R$ ${produto.preco.toFixed(2)}</p>
+                <div style="text-align: center; margin: 1rem 0;">
+                <button class="remover-item" data-index="${index}">X</button>
+                </div>
+            </div>
+        `;
+        listaProdutos.innerHTML += produtoCard;
+    });
+    document.querySelectorAll('.remover-item').forEach(button => {
+        button.addEventListener('click', function () {
+            const index = this.getAttribute('data-index');
+            removerItemDoCarrinho(index);
+        });
+    });
+}
+
+function calcularTotal() {
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    let total = 0;
+    carrinho.forEach(produto => {
+        total += produto.preco;
+    });
+    const totalValor = document.getElementById('total-valor');
+    if (totalValor) {
+        totalValor.textContent = `R$ ${total.toFixed(2)}`;
+    }
+}
+
+function removerItemDoCarrinho(index) {
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    carrinho.splice(index, 1);
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    exibirProdutosCarrinho();
+    calcularTotal();
+}
+
+function adicionarAoCarrinho(produto) {
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    carrinho.push(produto);
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    alert(`${produto.nome} adicionado com sucesso!`);
+    exibirProdutosCarrinho();
+    calcularTotal();
+}
+
+function limparCarrinho() {
+    localStorage.removeItem('carrinho');
+    exibirProdutosCarrinho();
+    calcularTotal();
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     let produtos = [];
-
     fetch('../assets/data/produtos.json')
         .then(response => response.json())
         .then(data => {
@@ -33,16 +98,13 @@ document.addEventListener("DOMContentLoaded", function () {
             console.error("Erro ao carregar os produtos:", error);
         });
 
-    // Função para renderizar produtos
     function renderizarProdutos(produtos) {
         const gridProdutos = document.querySelector('.grid-produtos');
         gridProdutos.innerHTML = '';
-
         if (produtos.length === 0) {
             gridProdutos.innerHTML = '<p style="font-weight: bold">Nenhum produto encontrado.</p>';
             return;
         }
-
         produtos.forEach(produto => {
             const produtoCard = `
                 <div class="card produto-card">
@@ -58,13 +120,24 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
             gridProdutos.innerHTML += produtoCard;
         });
+        const buttons = document.querySelectorAll('.adicionar-carrinho');
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const produtoCard = this.closest('.produto-card');
+                const nomeProduto = produtoCard.querySelector('.card-title').textContent;
+                const precoProduto = parseFloat(produtoCard.querySelector('.card-preco').textContent.replace('R$ ', '').replace(',', '.'));
+                const imagemProduto = produtoCard.querySelector('.card-img-top').src.split('/').pop().replace('.png', '');
+                const produto = { imagem: imagemProduto, nome: nomeProduto, preco: precoProduto };
+                adicionarAoCarrinho(produto);
+                alert(`${nomeProduto} foi adicionado ao carrinho com sucesso!`);
+            });
+        });
     }
 
     document.getElementById('filtrar-btn').addEventListener('click', function () {
         const nome = document.getElementById('filtro-nome').value.toLowerCase();
         const marca = document.getElementById('filtro-marca').value.toLowerCase();
         const precoMaximo = parseFloat(document.getElementById('filtro-preco').value) || Infinity;
-
         const produtosFiltrados = produtos.filter(produto => {
             return (
                 produto.nome.toLowerCase().includes(nome) &&
@@ -72,23 +145,28 @@ document.addEventListener("DOMContentLoaded", function () {
                 produto.preco <= precoMaximo
             );
         });
-
         renderizarProdutos(produtosFiltrados);
     });
-
 });
 
-// Função para carregar os estados e preencher o select
+function pagamento() {
+    const formulario = document.querySelector('form');
+    if (!formulario.checkValidity()) {
+        formulario.reportValidity();
+        return;
+    }
+    localStorage.removeItem('carrinho');
+    exibirProdutosCarrinho();
+    calcularTotal();
+    alert("Pagamento realizado com sucesso!");
+}
+
 function carregarEstados() {
     fetch('../assets/data/estados.json')
         .then(response => response.json())
         .then(estados => {
             const selectEstado = document.getElementById('estado');
-
-            // Limpa as opções existentes
             selectEstado.innerHTML = '<option value="" disabled selected>Selecione o estado</option>';
-
-            // Adiciona as opções no select
             estados.forEach(estado => {
                 const option = document.createElement('option');
                 option.value = estado.sigla;
@@ -99,39 +177,42 @@ function carregarEstados() {
         .catch(erro => console.log('Erro ao carregar estados:', erro));
 }
 
-// Chama a função para carregar os estados quando a página carregar
 document.addEventListener('DOMContentLoaded', carregarEstados);
 
-
-// Endereço
 function buscarEndereco(cep) {
     const url = `https://viacep.com.br/ws/${cep}/json/`;
-
     fetch(url)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao buscar o CEP. Verifique o número e tente novamente.");
+            }
+            return response.json();
+        })
         .then(dados => {
             if (dados.erro) {
-                console.log('CEP não encontrado');
+                alert("CEP não encontrado. Por favor, verifique o número e tente novamente.");
             } else {
-                // Preencher os campos do formulário com os dados recebidos da API
                 document.getElementById('logradouro').value = dados.logradouro || '';
                 document.getElementById('bairro').value = dados.bairro || '';
                 document.getElementById('cidade').value = dados.localidade || '';
                 document.getElementById('estado').value = dados.uf || '';
-                document.getElementById('cep').value = dados.cep || '';
             }
         })
-        .catch(erro => console.log('Erro ao buscar o endereço:', erro));
+        .catch(erro => {
+            console.error("Erro ao buscar o endereço:", erro);
+            alert("Não foi possível buscar o endereço. Por favor, tente novamente.");
+        });
 }
 
-// Exemplo de como usar a função ao digitar o CEP no campo de CEP
 document.getElementById('cep').addEventListener('blur', function () {
-    const cep = this.value.replace(/\D/g, ''); // Remove qualquer caractere não numérico
-    if (cep.length === 8) { // Verifica se o CEP tem 8 dígitos
+    const cep = this.value.replace(/\D/g, '');
+    if (cep.length === 8) {
         buscarEndereco(cep);
+    } else {
+        const mensagemFeedback = document.getElementById('mensagem-feedback');
+        if (mensagemFeedback) {
+            mensagemFeedback.textContent = 'CEP inválido. Por favor, insira um CEP com 8 dígitos.';
+            mensagemFeedback.style.color = 'red';
+        }
     }
 });
-
-
-
-// Pagamento

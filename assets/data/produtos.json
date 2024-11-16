@@ -5,6 +5,7 @@
         "preco": 5999.99,
         "descricao": "iPhone 14 com chip A15 Bionic, câmera dupla de 12MP e tela Super Retina XDR.",
         "imagem": "iphone14.png",
+        "nomeImagem": "iphone14",
         "propriedades": {
             "tela": "6.1 polegadas",
             "bateria": "3279mAh",
@@ -18,6 +19,7 @@
         "preco": 9999.99,
         "descricao": "iPhone 14 Pro com tela ProMotion de 6.1 polegadas e câmera tripla de 48MP.",
         "imagem": "iphone14pro.png",
+        "nomeImagem": "iphone14pro",
         "propriedades": {
             "tela": "6.1 polegadas",
             "bateria": "3200mAh",
@@ -31,6 +33,7 @@
         "preco": 10999.99,
         "descricao": "iPhone 14 Pro Max com tela de 6.7 polegadas, chip A16 e câmera avançada.",
         "imagem": "iphone14max.png",
+        "nomeImagem": "iphone14max",
         "propriedades": {
             "tela": "6.7 polegadas",
             "bateria": "4323mAh",
@@ -44,6 +47,7 @@
         "preco": 3299.99,
         "descricao": "iPhone SE com chip A15 Bionic e câmera de 12MP.",
         "imagem": "iphonese.png",
+        "nomeImagem": "iphonese",
         "propriedades": {
             "tela": "4.7 polegadas",
             "bateria": "2018mAh",
@@ -57,6 +61,7 @@
         "preco": 3999.99,
         "descricao": "iPhone 13 com chip A15 Bionic, câmera dupla e display Super Retina XDR.",
         "imagem": "iphone13.png",
+        "nomeImagem": "iphone13",
         "propriedades": {
             "tela": "6.1 polegadas",
             "bateria": "3240mAh",
@@ -70,6 +75,7 @@
         "preco": 3999.99,
         "descricao": "Samsung Galaxy S22 com tela de 6.1 polegadas e câmera tripla de 50MP.",
         "imagem": "s22.png",
+        "nomeImagem": "s22",
         "propriedades": {
             "tela": "6.1 polegadas",
             "bateria": "3700mAh",
@@ -83,6 +89,7 @@
         "preco": 9999.99,
         "descricao": "Galaxy S22 Ultra com tela de 6.8 polegadas, S Pen e câmera quádrupla de 108MP.",
         "imagem": "s22ultra.png",
+        "nomeImagem": "s22ultra",
         "propriedades": {
             "tela": "6.8 polegadas",
             "bateria": "5000mAh",
@@ -96,6 +103,7 @@
         "preco": 7999.99,
         "descricao": "Samsung Galaxy Z Flip4, smartphone dobrável com design inovador e câmera dupla.",
         "imagem": "zflip.png",
+        "nomeImagem": "zflip",
         "propriedades": {
             "tela": "6.7 polegadas (dobrável)",
             "bateria": "3700mAh",
@@ -109,6 +117,7 @@
         "preco": 4999.99,
         "descricao": "Xiaomi 12 Pro com tela AMOLED de 6.73 polegadas e carregamento rápido.",
         "imagem": "xiaomi12pro.png",
+        "nomeImagem": "xiaomi12pro",
         "propriedades": {
             "tela": "6.73 polegadas",
             "bateria": "4600mAh",
@@ -122,6 +131,7 @@
         "preco": 3499.99,
         "descricao": "Xiaomi Mi 11 com câmera de 108MP e tela AMOLED de 6.81 polegadas.",
         "imagem": "xiaomi11.png",
+        "nomeImagem": "xiaomi11",
         "propriedades": {
             "tela": "6.81 polegadas",
             "bateria": "4600mAh",

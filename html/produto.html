@@ -18,7 +18,21 @@
   <body>
     <div id="header"></div>
 
-    <main class="container justify-content-center">
+    <main class="container justify-content-center flex-column">
+      <div id="produtos-carrinho">
+        <h3>Produtos no Carrinho</h3>
+        <div class="carrinho-list" id="lista-produtos"></div>
+        <!-- Aqui os produtos serão exibidos -->
+        <button onclick="limparCarrinho()" class="btn btn-danger">
+          Limpar Carrinho
+        </button>
+      </div>
+      <div id="total-a-pagar">
+        <h3>
+          Total a Pagar: R$ <span class="preco" id="total-valor">0.00</span>
+        </h3>
+      </div>
+
       <div class="dados-pessoais">
         <h2>Preencha seus Dados e Realize o Pagamento</h2>
         <p>
@@ -26,7 +40,6 @@
           pessoais, e depois concluir o pagamento:
         </p>
 
-        <!-- Formulário de Dados Pessoais -->
         <form>
           <h3>Dados Pessoais</h3>
 
@@ -113,9 +126,9 @@
           <div class="form-group">
             <label for="estado">Estado</label>
             <select class="form-control" id="estado" required>
-                <option value="" disabled selected>Selecione o estado</option>
+              <option value="" disabled selected>Selecione o estado</option>
             </select>
-        </div>
+          </div>
 
           <!-- Formulário de Pagamento -->
           <h3>Dados de Pagamento</h3>
@@ -163,7 +176,7 @@
           </div>
 
           <div style="width: 100%; text-align: center">
-            <button type="submit" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" onclick="pagamento()">
               Confirmar Pagamento
             </button>
           </div>

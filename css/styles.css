@@ -111,6 +111,48 @@ h3 {
     color: var(--primary-color);
 }
 
+#produtos-carrinho {
+    text-align: center;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.remover-item {
+    width: 30px;
+    color: var(--dark-charcoal);
+    border: solid 1px var(--dark-gray);
+    background-color: white;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+    font-size: 15px;
+}
+
+.carrinho-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#total-a-pagar {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+
+    .preco {
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+}
+
+.sobre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
 .produtos {
     display: flex;
     flex-direction: column;
